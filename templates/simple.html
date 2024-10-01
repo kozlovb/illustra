@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Interface</title>
+    <style>
+        #chatbox {
+            width: 100%;
+            height: 300px;
+            border: 1px solid black;
+            padding: 10px;
+            overflow-y: scroll;
+        }
+        #user-input {
+            width: 100%;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="chatbox"></div>
+    <input type="text" id="user-input" placeholder="Type a message..." />
+    <button onclick="sendPrompt()">Send</button>
+
+    <script>
+        function sendPrompt() {
+            const prompt = document.getElementById('user-input').value;
+
+            fetch('/api/send_prompt', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ prompt: prompt }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                const chatbox = document.getElementById('chatbox');
+                chatbox.innerHTML += `<p>User: ${prompt}</p>`;
+                chatbox.innerHTML += `<p>ChatGPT: ${data.response}</p>`;
+                document.getElementById('user-input').value = ''; // Clear input
+            });
+        }
+    </script>
+</body>
+</html>
+
