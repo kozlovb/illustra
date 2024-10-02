@@ -1,0 +1,10 @@
+.button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: var(--text-s-normal-size);
+  color: var(--text-text-invert);
+  font-family: var(--text-s-normal);
+}

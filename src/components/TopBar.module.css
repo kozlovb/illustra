@@ -1,0 +1,133 @@
+.separatorIcon {
+  height: 24px;
+  width: 5px;
+  position: relative;
+  display: none;
+}
+.text {
+  position: relative;
+  line-height: 20px;
+  font-weight: 500;
+}
+.breadcrumbs1 {
+  align-self: stretch;
+  border-radius: var(--br-5xs);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--padding-sm) 0 0;
+  gap: var(--gap-sm);
+}
+.separatorIcon1 {
+  height: 24px;
+  width: 5px;
+  position: relative;
+}
+.breadcrumbs2,
+.breadcrumbs6 {
+  align-self: stretch;
+  border-radius: var(--br-5xs);
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--padding-sm) 0 0;
+  gap: var(--gap-sm);
+}
+.breadcrumbs2 {
+  display: none;
+}
+.breadcrumbs6 {
+  display: flex;
+  color: var(--grey-500);
+}
+.breadcrumbs {
+  height: 36px;
+  display: none;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 2px 0;
+  box-sizing: border-box;
+  text-align: left;
+  font-family: var(--dm-sans-sm-14px-medium);
+}
+.difficultCommuniquer {
+  width: 206px;
+  position: relative;
+  line-height: 28px;
+  font-weight: 500;
+  display: inline-block;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.heroiconsMinipencilSquare {
+  margin: 0;
+  height: 20px;
+  width: 20px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.difficultCommuniquerParent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-5xs);
+}
+.topbarInner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-width: 797px;
+  max-width: 100%;
+  font-size: var(--text-lg-medium-size);
+  color: var(--border-active);
+}
+.text6,
+.textParent,
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.text6 {
+  text-decoration: none;
+  height: 32px;
+  flex: 1;
+  position: relative;
+  font-weight: 500;
+  color: inherit;
+  min-width: 47px;
+}
+.textParent,
+.topbar {
+  flex-direction: row;
+  gap: var(--gap-5xs);
+  color: var(--text-text-primary);
+}
+.topbar {
+  width: 1440px;
+  background-color: var(--color-text-default-0);
+  border-bottom: 1px solid var(--border-hover);
+  box-sizing: border-box;
+  max-width: 100%;
+  flex-wrap: wrap;
+  align-content: center;
+  padding: 18.5px 32px 17px;
+  gap: var(--gap-base);
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  font-size: var(--text-s-normal-size);
+  color: var(--grey-900);
+  font-family: var(--text-s-normal);
+}
+@media screen and (max-width: 901px) {
+  .topbarInner {
+    min-width: 100%;
+  }
+}

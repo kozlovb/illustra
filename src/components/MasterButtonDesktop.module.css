@@ -1,0 +1,28 @@
+.heroiconsOutlinearrowLeft {
+  height: 20px;
+  width: 20px;
+  position: relative;
+}
+.text {
+  width: 36px;
+  position: relative;
+  font-weight: 500;
+  display: inline-block;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.masterbuttondesktop {
+  border-radius: var(--radius-rounded-xs);
+  background-color: var(--border-active);
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-spacing-sm) var(--padding-mini);
+  gap: var(--spacing-spacing-sm);
+  text-align: center;
+  font-size: var(--text-s-normal-size);
+  color: var(--text-text-invert);
+  font-family: var(--text-s-normal);
+}

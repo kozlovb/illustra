@@ -1,0 +1,190 @@
+.background {
+  align-self: stretch;
+  flex: 1;
+  position: relative;
+  border-radius: var(--boundvariablesdata);
+  background-color: #84d0c2;
+  max-width: 100%;
+}
+.intersectIcon {
+  border: 0;
+  background-color: transparent;
+  height: 102.5px;
+  width: 100%;
+  outline: 0;
+  position: absolute;
+  margin: 0 !important;
+  top: 0;
+  right: 0;
+  left: 0;
+  max-width: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+.frameChild {
+  height: 38.7px;
+  width: 38.7px;
+  position: relative;
+}
+.element {
+  height: 71px;
+  width: 0;
+}
+.frameParent {
+  margin: 0 !important;
+  position: absolute;
+  top: -39px;
+  left: -35px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 40.3px;
+  opacity: 0.16;
+  z-index: 2;
+}
+.placeholder {
+  align-self: stretch;
+  height: 6px;
+}
+.fill,
+.fill1,
+.fill2,
+.fill3,
+.fill4,
+.fill5,
+.track {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+.track {
+  width: 100%;
+  right: 0;
+  background-color: var(--color-border-base);
+}
+.fill,
+.fill1,
+.fill2,
+.fill3,
+.fill4,
+.fill5 {
+  border-radius: var(--br-5xs);
+  background-color: var(--border-active);
+}
+.fill {
+  width: 10%;
+  right: 90%;
+  z-index: 1;
+}
+.fill1,
+.fill2,
+.fill3,
+.fill4,
+.fill5 {
+  width: 22.71%;
+  right: 77.29%;
+  display: none;
+}
+.fill2,
+.fill3,
+.fill4,
+.fill5 {
+  width: 45.43%;
+  right: 54.57%;
+}
+.fill3,
+.fill4,
+.fill5 {
+  width: 64.67%;
+  right: 35.33%;
+}
+.fill4,
+.fill5 {
+  width: 81.7%;
+  right: 18.3%;
+}
+.fill5 {
+  width: 92.43%;
+  right: 7.57%;
+}
+.progressIndicatorBar {
+  align-self: stretch;
+  height: 8px;
+  position: relative;
+  border-radius: var(--br-5xs);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.vousAvezComplt {
+  position: relative;
+  line-height: 16px;
+  font-weight: 500;
+}
+.placeholderParent {
+  width: 317px;
+  margin: 0 !important;
+  position: absolute;
+  bottom: 26px;
+  left: calc(50% - 158.5px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-9xs);
+  z-index: 1;
+}
+.uneVraisFuse {
+  text-decoration: none;
+  position: relative;
+  font-weight: 700;
+  color: inherit;
+}
+.backgroundParent,
+.cardMembership,
+.uneVraisFuseWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.uneVraisFuseWrapper {
+  width: 238px;
+  margin: 0 !important;
+  position: absolute;
+  top: 14px;
+  right: 15px;
+  border-radius: var(--boundvariablesdata1);
+  padding: 22px 0;
+  box-sizing: border-box;
+  z-index: 2;
+  font-size: var(--text-2xl-bold-size);
+  font-family: var(--text-2xl-bold);
+}
+.backgroundParent,
+.cardMembership {
+  max-width: 100%;
+}
+.backgroundParent {
+  height: 175px;
+  flex: 1;
+  border-radius: var(--boundvariablesdata);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  gap: var(--gap-9xs);
+  text-align: left;
+  font-size: var(--text-xs-medium-size);
+  color: var(--border-active);
+  font-family: var(--text-s-normal);
+}
+.cardMembership {
+  width: 353px;
+  border-radius: 18px;
+  background-color: #f2b263;
+  line-height: normal;
+  letter-spacing: normal;
+}
