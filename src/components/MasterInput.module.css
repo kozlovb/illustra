@@ -1,0 +1,45 @@
+.helpText,
+.label {
+  position: relative;
+  line-height: 16px;
+  font-weight: 500;
+}
+.helpText {
+  width: 48px;
+  color: var(--text-text-help);
+  text-align: right;
+  display: none;
+}
+.caption,
+.top {
+  width: 294px;
+  display: none;
+}
+.top {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--padding-8xs);
+  box-sizing: border-box;
+  gap: var(--gap-56xs);
+}
+.caption {
+  position: relative;
+  line-height: 16px;
+  font-weight: 500;
+  color: var(--text-text-help);
+  text-align: right;
+}
+.masterinput {
+  align-self: stretch;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--spacing-spacing-xs);
+  text-align: left;
+  font-size: var(--text-xs-medium-size);
+  color: var(--text-text-secondary);
+  font-family: var(--text-s-normal);
+}

@@ -1,0 +1,75 @@
+.sidebarChild {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  object-fit: contain;
+}
+.votreAssistant {
+  position: relative;
+  letter-spacing: 0.17em;
+  line-height: 20px;
+}
+.commentDiscuterAvec {
+  margin: 0;
+  align-self: stretch;
+  flex: 1;
+  position: relative;
+  font-size: var(--text-2xl-bold-size);
+  font-weight: 700;
+  font-family: var(--text-2xl-bold);
+  color: var(--surface-hover-1);
+  white-space: nowrap;
+}
+.chatHeader {
+  flex: 1;
+}
+.chatHeader,
+.chatHeaderParent,
+.sidebarInner {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+.chatHeaderParent {
+  flex: 1;
+  gap: var(--gap-5xl);
+}
+.sidebarInner {
+  height: 165px;
+  text-align: left;
+  font-size: var(--text-xs-medium-size);
+  color: #8853b5;
+  font-family: var(--text-s-normal);
+}
+.groupIcon {
+  width: 51.4%;
+  height: 11.1%;
+  position: absolute;
+  margin: 0 !important;
+  top: 90.25%;
+  right: -9.11%;
+  bottom: -1.35%;
+  left: 57.71%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.sidebar {
+  width: 293px;
+  box-shadow: var(--shadow-xl);
+  border-radius: 11px;
+  background-color: var(--color-text-default-0);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-5xl) var(--padding-base) 598px;
+  box-sizing: border-box;
+  position: relative;
+  gap: var(--gap-5xl);
+  line-height: normal;
+  letter-spacing: normal;
+}

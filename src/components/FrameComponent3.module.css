@@ -1,0 +1,22 @@
+.instanceChild {
+  height: 67.5px;
+  width: 67.5px;
+  position: relative;
+}
+.element {
+  height: 41px;
+  width: 0;
+}
+.frameParent {
+  width: 68px;
+  margin: 0 !important;
+  position: absolute;
+  right: -42px;
+  bottom: -49.9px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-4xl-5);
+  z-index: 3;
+}

@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=ABC+Monument+Grotesk+Trial:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Advent+Pro:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap");
+body {
+  margin: 0;
+  line-height: normal;
+}
+:root {
+  /* fonts */
+  --text-2xl-bold: "Advent Pro";
+  --text-s-normal: "ABC Monument Grotesk Trial";
+  --text-xs-medium1: Inter;
+  --dm-sans-sm-14px-medium: "DM Sans";
+
+  /* font sizes */
+  --text-2xl-bold-size: 24px;
+  --text-xs-medium-size: 12px;
+  --text-s-normal-size: 14px;
+  --font-size-3xs-7: 9.7px;
+  --text-lg-medium-size: 18px;
+
+  /* Colors */
+  --color-text-default-0: #fff;
+  --text-text-invert: #f8fafc;
+  --color-border-base: #eaecf0;
+  --color-azure: #e5f7f3;
+  --surface-hover-1: #563672;
+  --border-active: #42225d;
+  --grey-500: #6b7280;
+  --text-text-secondary: #546174;
+  --surface-all-disabled: #cbd5e1;
+  --grey-900: #111827;
+  --text-text-primary: #0f172a;
+  --text-text-help: #bbc6d5;
+  --surface-secondary: #bebde6;
+  --surface-background-light-brand: #efeafc;
+  --border-hover: #e2e8f0;
+
+  /* Spacing */
+  --boundvariablesdata: 16px;
+  --boundvariablesdata1: 60px;
+  --radius-rounded-xs: 8px;
+  --spacing-spacing-sm: 8px;
+  --spacing-spacing-xs: 4px;
+  --spacing-spacing-xs1: 4px;
+  --radius-rounded-xs1: 8px;
+  --number-44: 44px;
+
+  /* Gaps */
+  --gap-5xl: 24px;
+  --gap-5xs: 8px;
+  --gap-lg: 18px;
+  --gap-9xs: 4px;
+  --gap-4xl-5: 23.5px;
+  --gap-21xl: 40px;
+  --gap-56xs: -43px;
+  --gap-xs: 12px;
+  --gap-base: 16px;
+  --gap-sm: 14px;
+
+  /* Paddings */
+  --padding-5xl: 24px;
+  --padding-base: 16px;
+  --padding-xs: 12px;
+  --padding-158xl: 177px;
+  --padding-3xs: 10px;
+  --padding-5xs: 8px;
+  --padding-7xs: 6px;
+  --padding-7xs-8: 5.8px;
+  --padding-8xs: 5px;
+  --padding-7xs-7: 5.7px;
+  --padding-21xl: 40px;
+  --padding-xl: 20px;
+  --padding-49xl: 68px;
+  --padding-7xl: 26px;
+  --padding-mini: 15px;
+  --padding-sm: 14px;
+  --padding-9xs: 4px;
+  --padding-82xl: 101px;
+  --padding-160xl: 179px;
+  --padding-47xl: 66px;
+  --padding-97xl: 116px;
+  --padding-11xl: 30px;
+
+  /* Border radiuses */
+  --br-6xs: 7px;
+  --br-29xl-6: 48.6px;
+  --br-base: 16px;
+  --br-5xs: 8px;
+  --br-xs: 12px;
+  --br-base-2: 16.2px;
+  --br-6xl: 25px;
+  --br-25xl: 44px;
+
+  /* Effects */
+  --shadow-xl: 20px 4px 54px rgba(0, 0, 0, 0.06);
+  --shadow: 0px 4px 11px rgba(0, 0, 0, 0.06);
+}

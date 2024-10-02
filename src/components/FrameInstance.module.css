@@ -1,0 +1,85 @@
+.heroiconsOutlinecheck {
+  width: 13.5px;
+  height: 13.5px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.checkboxes {
+  border-radius: var(--br-29xl-6);
+  background-color: var(--border-active);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--padding-7xs-8) var(--padding-8xs) var(--padding-7xs-7);
+}
+.votreSupport {
+  text-decoration: none;
+  flex: 1;
+  position: relative;
+  line-height: 20px;
+  font-weight: 700;
+  color: inherit;
+  display: inline-block;
+  min-width: 89px;
+}
+.checkboxesParent {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-lg);
+  min-width: 85px;
+}
+.divider1 {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: var(--border-active);
+}
+.divider {
+  height: 1px;
+  width: 40px;
+  position: relative;
+}
+.vosObjectifs {
+  flex: 1;
+  position: relative;
+  line-height: 20px;
+}
+.frameGroup,
+.frameParent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+.frameGroup {
+  flex: 1;
+  padding: 0;
+  box-sizing: border-box;
+  gap: var(--gap-lg);
+  min-width: 82px;
+}
+.frameParent {
+  width: 482.5px;
+  max-width: 100%;
+  gap: var(--gap-5xs);
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  font-size: var(--text-s-normal-size);
+  color: var(--border-active);
+  font-family: var(--text-s-normal);
+}
+@media screen and (max-width: 386px) {
+  .frameParent {
+    flex-wrap: wrap;
+  }
+}

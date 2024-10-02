@@ -1,0 +1,47 @@
+.label,
+.text {
+  font-weight: 500;
+}
+.label {
+  position: relative;
+  line-height: 16px;
+  display: none;
+}
+.text {
+  width: 262px;
+  border: 0;
+  outline: 0;
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: var(--text-xs-medium1);
+  font-size: var(--text-s-normal-size);
+  color: var(--text-text-secondary);
+}
+.field,
+.fieldWrapper {
+  align-self: stretch;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.field {
+  border-radius: var(--radius-rounded-xs1);
+  background-color: var(--color-text-default-0);
+  border: 1px solid var(--surface-secondary);
+  align-items: center;
+  padding: var(--padding-3xs) var(--padding-xl);
+  gap: var(--spacing-spacing-xs1);
+}
+.fieldWrapper {
+  border-radius: var(--br-xs);
+  align-items: flex-start;
+  padding: var(--spacing-spacing-xs1);
+  text-align: left;
+  font-size: var(--text-xs-medium-size);
+  color: var(--text-text-secondary);
+  font-family: var(--text-xs-medium1);
+}
