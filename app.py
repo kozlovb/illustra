@@ -34,52 +34,41 @@ class ConversationState:
 
 conversation_history = [{"role": "system", "content": "You are ChatGPT."}]
 
-initial_prompt ="""
-The following situation is explained to a student:
-[In London, a person is not happy with how promotions work within a company called IntelligentConsulting. The person complains that despite overachieving their KPI, the promotion was not granted. The given root cause is the lack of visibility. The name of the person is Ben]
+initial_prompt = """
+The following situation is explained to me:
+[In London, a person named Ben is unhappy with how promotions work at IntelligentConsulting. Ben complains that despite exceeding KPIs, the promotion was not granted. The root cause is a lack of visibility.]
 
-The goal is to assess if the student has understood the situation well and can relate to it.
-
-Here is what the student answered:
+Here is my brief:
 "{}"
 
-If the student's explanation provides a clear or implied answer to the question "{}", reply with "yes."
+If this brief clearly or implicitly answers the question "{}", respond with a simple "yes."
+
+If the answer is unclear, incomplete, or differs from the original situation, ask **a straightforward clarification question** addressing me directly, without repeating the original question or providing additional explanations.
+
+Your response should be either a direct clarification question or "yes." Keep it concise, avoiding extra text or context.
+"""
+
+
+follow_up_prompt = """
+I gave this response: "{}" to your previous question.
+
+Based on this explanation, if my answer contains the reply to the question "{}", reply with "yes."
 
 If the answer is ambiguous, incomplete, or unclear, ask **a simple and direct clarification question** based on the student’s answer, without repeating the original question.
 
-For example:
-- If the question is about **where**, ask: "Where did the situation take place?"
-- If the question is about **who**, ask: "Who is involved in the situation?"
+If the answer is ambiguous, incomplete, or not the same as in the original situation ask **a simple and direct clarification question** 
 
 Your response should be either a direct clarification question or "yes." Avoid additional text or meta-explanations.
 """
 
-follow_up_prompt = """
-The student gave this response: "{}" to your previous question.
-
-Based on this explanation, if the student explanation contains the answer to the question "{}", reply with "yes."
-
-If the answer is ambiguous, incomplete, or unclear, ask **a simple and direct clarification question** based on the student’s answer, without repeating the original question.
-
-For example:
-- If the question is about **where**, ask: "Where did the situation take place?"
-- If the question is about **who**, ask: "Who is involved in the situation?"
-
-Your response should be either a single clarification question or "yes." Avoid meta-responses or additional context.
-"""
-
 
 brief_prompt = """
-Based on the answers student provided and the initial situation description, please create a brief summary **as if you are addressing the student directly**. The summary should use 'you' to refer to the student and be conversational in tone. 
-
-After the summary, ask the student if they agree with the brief or would like to add anything. 
-
-The summary should avoid referring to the student in the third person and instead use language like "you have mentioned," "your view," or "you described." 
+Based on the answers I provided and the initial situation description, please create a brief summary. 
+After the summary, ask me if I agree with the brief or would like to add anything. 
 """
 
-
 brief_follow_up_prompt = """
-Based on the student's reply [{}], if the student confirms that they agree with the summary or says something like 'all good' or 'no changes,' respond with a simple 'yes'  otherwise with 'no'
+Based on my reply [{}], if I confirm that I agree with the summary or say something like 'all good' or 'no changes,' respond with a simple 'yes'  otherwise add my reply to the summary and ask me again if I am happy with it
 """
 
 #'Does this revised summary accurately reflect your understanding?' or 'Is this updated summary satisfactory?'
@@ -99,7 +88,7 @@ class Conversation:
     def send_to_gpt(self):
         try:
             response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",  # or "gpt-4" if available
+            model="gpt-4",  # or "gpt-4" if available
             messages = self.conversation_history,
             max_tokens=100,
             temperature=0.7
@@ -120,12 +109,12 @@ class Conversation:
                     self.situation_description = user_prompt
                 reply, question_is_answered = self.clarify(user_prompt, "Did they understand who is involved in the situation ?")
                 return self.return_reply_or_go_to_next_state(reply, question_is_answered)
-            #case State.where:
-            #    reply, question_is_answered = self.clarify(user_prompt, "Did they understand where is happened ?")
-            #    return self.return_reply_or_go_to_next_state(reply, question_is_answered)
-            #case State.why_this_problem_is_important:
-            #    reply, question_is_answered = self.clarify(user_prompt, "Why this is an important problem ?")
-            #    return self.return_reply_or_go_to_next_state(reply, question_is_answered)
+            case State.where:
+                reply, question_is_answered = self.clarify(user_prompt, "Did they understand where is happened ?")
+                return self.return_reply_or_go_to_next_state(reply, question_is_answered)
+            case State.why_this_problem_is_important:
+                reply, question_is_answered = self.clarify(user_prompt, "Why this is an important problem ?")
+                return self.return_reply_or_go_to_next_state(reply, question_is_answered)
             case State.brief_confirmation:
                 reply, question_is_answered = self.construct_brief(user_prompt)
                 return self.return_reply_or_go_to_next_state(reply, question_is_answered)
@@ -180,12 +169,7 @@ class Conversation:
             return reply
         else:
             #if there are no more questions to ask we call reply recurcively and thus go to the next state
-            #self.state.state = next_enum(self.state.state)
-            if self.state.state is not State.brief_confirmation:
-                self.state.state = State.brief_confirmation
-            else: 
-                self.state.state = State.end
-
+            self.state.state = next_enum(self.state.state)
             return self.reply("")
 
 conversation = Conversation()
