@@ -55,25 +55,23 @@ const ChatPage: FC = () => {
   return (
     <div className={styles.chatBot}>
       <header className={styles.topbar}>
-        <div className={styles.button}>
-          <div className={styles.masterbuttondesktop}>
+        <div className={styles.button1}>
+          <button type="button" className={styles.arrowLeft}>
             <img
-              className={styles.heroiconsOutlinearrowLeft}
+              className={styles.arrowLeftIcon}
               loading="lazy"
               alt=""
               src="/heroiconsoutlinearrowleft.svg"
             />
-          </div>
+          </button>
         </div>
-        <div className={styles.content}>
+        <div className={styles.pencilIconContainer}>
           <PencilIcon />
-          <div className={styles.difficultCommuniquerParent}>
-          </div>
         </div>
-        <div className={styles.searchBar}>
-          <span className={styles.text6}>Quitter</span>
+        <div className={styles.closeContainer}>
+          <span className={styles.exit}>Quitter</span>
           <div className={styles.button1}>
-            <div className={styles.masterbuttondesktop1}>
+            <div className={styles.closeButton}>
               <img
                 className={styles.heroiconsOutlinexMark}
                 loading="lazy"
@@ -210,18 +208,16 @@ const ChatPage: FC = () => {
                     />
                   </div>
                   <div className={styles.buttonContainer}>
-                    <div className={styles.innerButtonContainer}>
                       <button type="submit" className={styles.sendButton}>Envoyer</button>
-                    </div>
                   </div>
                 </form>
 
                 <div className={styles.secondButtonContainer}>
                   <div className={styles.secondButtonInnerContainer}>
 
-                    <div className={styles.secondButton}>
+                    <button type="button" className={styles.secondButton}>
                       Découvrir mon récapitulatif
-                    </div>
+                    </button>
 
                   </div>
                 </div>

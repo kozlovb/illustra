@@ -9,5 +9,7 @@
 # illustra
 Illustra learning MVP
 
+install python
 pip install Flask
-pip install openai
+pip install flask_cors
+pip install openai==0.28
