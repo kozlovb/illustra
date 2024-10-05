@@ -1,6 +1,7 @@
 from flask import Flask, render_template, jsonify, request
 from flask_cors import CORS
 from enum import Enum, auto
+import re
 
 import openai
 
@@ -65,10 +66,12 @@ Your response should be either a direct clarification question or "yes." Avoid a
 brief_prompt = """
 Based on the answers I provided and the initial situation description, please create a brief summary. 
 After the summary, ask me if I agree with the brief or would like to add anything. 
+Please put the question in [].
 """
 
 brief_follow_up_prompt = """
-Based on my reply [{}], if I confirm that I agree with the summary or say something like 'all good' or 'no changes,' respond with a simple 'yes'  otherwise add my reply to the summary and ask me again if I am happy with it
+Based on my reply [{}], if I confirm that I agree with the summary or say something like 'all good' or 'no changes,' respond with a simple 'yes'  otherwise add my reply to the summary and ask me again if I am happy with it.
+Please put the question in [].
 """
 
 #'Does this revised summary accurately reflect your understanding?' or 'Is this updated summary satisfactory?'
@@ -84,19 +87,20 @@ class Conversation:
         self.state = ConversationState()
         self.conversation_history = [{"role": "system", "content": "You are ChatGPT."}]
         self.situation_description = ""
+        self.final_brief = ""
 
-    def send_to_gpt(self):
+    def send_to_gpt(self, prompt_dict):
+        self.conversation_history.append(prompt_dict)
         try:
             response = openai.ChatCompletion.create(
-            model="gpt-4",  # or "gpt-4" if available
+            model="gpt-4",
             messages = self.conversation_history,
             max_tokens=100,
             temperature=0.7
             )
             reply = response['choices'][0]['message']['content']
-            self.conversation_history.append({"role": "assistant", "content": reply})            # Get the response content
+            self.conversation_history.append({"role": "assistant", "content": reply})
             print("current conversation is ", self.conversation_history)
-            print("returning reply: ", reply)
             return reply
         except Exception as e:
             reply = f"An error occurred: {e}"
@@ -119,7 +123,7 @@ class Conversation:
                 reply, question_is_answered = self.construct_brief(user_prompt)
                 return self.return_reply_or_go_to_next_state(reply, question_is_answered)
             case State.end:
-                return jsonify({"response": "the end"})
+                return jsonify({"response": "You can now press on discover my brief button"})
 
 
     def reply_is_yes(self, reply):
@@ -130,11 +134,11 @@ class Conversation:
             return False
     
     def clarify(self, user_prompt, question_to_clarify):
+        reply = ""
         if self.state.cur_state_of_iterations == 0:
-            self.conversation_history.append({"role":"user", "content":initial_prompt.format(user_prompt, question_to_clarify)})
+            reply = self.send_to_gpt({"role":"user", "content":initial_prompt.format(user_prompt, question_to_clarify)})
         else:
-            self.conversation_history.append({"role":"user", "content":follow_up_prompt.format(user_prompt, question_to_clarify)})
-        reply = self.send_to_gpt()
+            reply = self.send_to_gpt({"role":"user", "content":follow_up_prompt.format(user_prompt, question_to_clarify)})
 
         if self.reply_is_yes(reply) or self.state.cur_state_of_iterations > MAX_ITERATIONS:
             self.state.cur_state_of_iterations = 0
@@ -142,23 +146,31 @@ class Conversation:
         else:
             self.state.cur_state_of_iterations += 1
             return jsonify({"response": reply}), False    
+
+    def parse_brief_reply(self, reply_with_question):
     
+        brief_with_question = re.sub(r'\[(.*?)\]', r'\1', reply_with_question)
+        print("HERE is the brief with Q", brief_with_question)
+    
+        brief = re.sub(r'\s*\[.*?\]\s*', ' ', reply_with_question).strip()
+        print("HERE is the brief", brief)
+    
+        return brief, brief_with_question
+
     def construct_brief(self, user_prompt):
         if self.state.cur_state_of_iterations == 0:
-            self.conversation_history.append({"role":"user", "content": brief_prompt})
             self.state.cur_state_of_iterations += 1
-            reply = self.send_to_gpt()
+            reply = self.send_to_gpt({"role":"user", "content": brief_prompt})
+            self.final_brief, reply = self.parse_brief_reply(reply)
             return jsonify({"response": reply}), False
         else:       
-            print("USER prompt", user_prompt)
-            self.conversation_history.append({"role":"user", "content": brief_follow_up_prompt.format(user_prompt)})
             self.state.cur_state_of_iterations += 1
-            reply = self.send_to_gpt()
-            print("GPT reply", reply)
+            reply = self.send_to_gpt({"role":"user", "content": brief_follow_up_prompt.format(user_prompt)})
             if self.reply_is_yes(reply) or self.state.cur_state_of_iterations > MAX_ITERATIONS:
                 self.state.cur_state_of_iterations = 0
                 return "", True
             else:
+                self.final_brief, reply = self.parse_brief_reply(reply)
                 self.state.cur_state_of_iterations += 1
                 return jsonify({"response": reply}), False  
 
