@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Advent+Pro:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap");
+body {
+  margin: 0;
+  line-height: normal;
+}
+:root {
+  /* fonts */
+  --text-2xl-bold: "Advent Pro";
+  --text-xs-medium: "Open Sans";
+  --text-xs-medium1: Inter;
+  --dm-sans-sm-14px-medium: "DM Sans";
+
+  /* font sizes */
+  --text-2xl-bold-size: 24px;
+  --font-size-lgi: 19px;
+  --text-xs-medium-size: 12px;
+  --text-s-medium-size: 14px;
+  --font-size-3xs-7: 9.7px;
+  --text-lg-medium-size: 18px;
+  --text-base-bold-size: 16px;
+
+  /* Colors */
+  --surface-background-light: #f8fafc;
+  --color-border-base: #eaecf0;
+  --color-sandybrown: #f2b263;
+  --grey-900: #111827;
+  --text-text-primary: #0f172a;
+  --color-gray-200: rgba(255, 255, 255, 0.5);
+  --color-gray-100: rgba(255, 255, 255, 0.1);
+  --surface-hover-1: #563672;
+  --surface-primary: #42225d;
+  --color-mediumturquoise: #84d0c2;
+  --color-text-default-0: #fff;
+  --color-azure: #e5f7f3;
+  --color-mediumpurple: #8853b5;
+  --text-text-help: #bbc6d5;
+  --surface-secondary: #bebde6;
+  --grey-500: #6b7280;
+  --text-text-secondary: #546174;
+  --surface-background-light-brand: #efeafc;
+  --surface-all-disabled: #cbd5e1;
+  --border-hover: #e2e8f0;
+  --surface-brand-light: #a8e3d8;
+
+  /* Spacing */
+  --boundvariablesdata: 16px;
+  --boundvariablesdata1: 60px;
+  --radius-rounded-xs: 8px;
+  --spacing-spacing-sm: 8px;
+  --spacing-spacing-xs: 4px;
+  --spacing-spacing-xs1: 4px;
+  --radius-rounded-xs1: 8px;
+  --number-44: 44px;
+
+  /* Gaps */
+  --gap-13xl: 32px;
+  --gap-base: 16px;
+  --gap-6xl: 25px;
+  --gap-5xl: 24px;
+  --gap-9xs: 4px;
+  --gap-21xl-3: 40.3px;
+  --gap-4xl-5: 23.5px;
+  --gap-5xs: 8px;
+  --gap-21xl: 40px;
+  --gap-xl: 20px;
+  --gap-56xs: -43px;
+  --gap-xs: 12px;
+  --gap-lg: 18px;
+  --gap-sm: 14px;
+  --gap-11xl: 30px;
+
+  /* Paddings */
+  --padding-13xl: 32px;
+  --padding-3xl: 22px;
+  --padding-5xl: 24px;
+  --padding-base: 16px;
+  --padding-579xl: 598px;
+  --padding-xs: 12px;
+  --padding-158xl: 177px;
+  --padding-3xs: 10px;
+  --padding-5xs: 8px;
+  --padding-21xl: 40px;
+  --padding-117xl: 136px;
+  --padding-xl: 20px;
+  --padding-7xl: 26px;
+  --padding-49xl: 68px;
+  --padding-mini: 15px;
+  --padding-4xs: 9px;
+  --padding-sm: 14px;
+  --padding-9xs: 4px;
+  --padding-8xs: 5px;
+  --padding-82xl: 101px;
+  --padding-160xl: 179px;
+  --padding-24xl: 43px;
+  --padding-56xl: 75px;
+  --padding-47xl: 66px;
+  --padding-97xl: 116px;
+  --padding-11xl: 30px;
+  --padding-7xs: 6px;
+  --padding-7xs-8: 5.8px;
+  --padding-7xs-7: 5.7px;
+  --padding-lg-5: 18.5px;
+  --padding-mid: 17px;
+  --padding-11xs: 2px;
+
+  /* Border radiuses */
+  --br-lg: 18px;
+  --br-base: 16px;
+  --br-41xl: 60px;
+  --br-5xs: 8px;
+  --br-2xs: 11px;
+  --br-6xs: 7px;
+  --br-7xs: 6px;
+  --br-xs: 12px;
+  --br-base-2: 16.2px;
+  --br-6xl: 25px;
+  --br-29xl-6: 48.6px;
+  --br-25xl: 44px;
+  --br-15xl: 34px;
+  --br-17xl: 36px;
+  --br-10xl: 29px;
+  --br-8xs: 5px;
+
+  /* Effects */
+  --shadow-xl: 20px 4px 54px rgba(0, 0, 0, 0.06);
+  --shadow: 0px 4px 11px rgba(0, 0, 0, 0.06);
+}
