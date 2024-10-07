@@ -36,15 +36,15 @@ class ConversationState:
 conversation_history = [{"role": "system", "content": "You are ChatGPT."}]
 
 initial_prompt = """
-The following situation is explained to me:
-[In London, a person named Ben is unhappy with how promotions work at IntelligentConsulting. Ben complains that despite exceeding KPIs, the promotion was not granted. The root cause is a lack of visibility.]
+original_situation  = 
+"In London, a person named Ben is unhappy with how promotions work at IntelligentConsulting. Ben complains that despite exceeding KPIs, the promotion was not granted. The root cause is a lack of visibility."
 
-Here is my brief:
+Here is a brief:
 "{}"
 
 If this brief clearly or implicitly answers the question "{}", respond with a simple "yes."
 
-If the answer is unclear, incomplete, or differs from the original situation, ask **a straightforward clarification question** addressing me directly, without repeating the original question or providing additional explanations.
+If the answer is unclear, incomplete, or differs from the original_situation, ask **a straightforward clarification question** addressing me directly, without repeating the original question or providing additional explanations.
 
 Your response should be either a direct clarification question or "yes." Keep it concise, avoiding extra text or context.
 """
@@ -55,9 +55,9 @@ I gave this response: "{}" to your previous question.
 
 Based on this explanation, if my answer contains the reply to the question "{}", reply with "yes."
 
-If the answer is ambiguous, incomplete, or unclear, ask **a simple and direct clarification question** based on the student’s answer, without repeating the original question.
+If the answer is ambiguous, incomplete, or unclear, ask **a simple and direct clarification question** based on my answer, without repeating the original question.
 
-If the answer is ambiguous, incomplete, or not the same as in the original situation ask **a simple and direct clarification question** 
+If the answer is ambiguous, incomplete, or not the same as in the original_situation ask **a simple and direct clarification question** 
 
 Your response should be either a direct clarification question or "yes." Avoid additional text or meta-explanations.
 """
@@ -99,6 +99,7 @@ class Conversation:
             temperature=0.7
             )
             reply = response['choices'][0]['message']['content']
+            print("MODELMODEL",response['model']) 
             self.conversation_history.append({"role": "assistant", "content": reply})
             print("current conversation is ", self.conversation_history)
             return reply
@@ -111,17 +112,17 @@ class Conversation:
             case State.init:
                 if len(self.situation_description) == 0:
                     self.situation_description = user_prompt
-                reply, question_is_answered = self.clarify(user_prompt, "Did they understand who is involved in the situation ?")
-                return self.return_reply_or_go_to_next_state(reply, question_is_answered)
+                reply, question_is_answered = self.clarify(user_prompt, "Who is involved in the situation ?")
+                return self.return_reply_or_go_to_next_state(reply, question_is_answered, self.situation_description)
             case State.where:
-                reply, question_is_answered = self.clarify(user_prompt, "Did they understand where is happened ?")
-                return self.return_reply_or_go_to_next_state(reply, question_is_answered)
+                reply, question_is_answered = self.clarify(user_prompt, "Where did situation happen ?")
+                return self.return_reply_or_go_to_next_state(reply, question_is_answered, self.situation_description)
             case State.why_this_problem_is_important:
                 reply, question_is_answered = self.clarify(user_prompt, "Why this is an important problem ?")
-                return self.return_reply_or_go_to_next_state(reply, question_is_answered)
+                return self.return_reply_or_go_to_next_state(reply, question_is_answered, "")
             case State.brief_confirmation:
                 reply, question_is_answered = self.construct_brief(user_prompt)
-                return self.return_reply_or_go_to_next_state(reply, question_is_answered)
+                return self.return_reply_or_go_to_next_state(reply, question_is_answered, "")
             case State.end:
                 return jsonify({"response": "You can now press on discover my brief button"})
 
@@ -174,15 +175,13 @@ class Conversation:
                 self.state.cur_state_of_iterations += 1
                 return jsonify({"response": reply}), False  
 
-    def return_reply_or_go_to_next_state(self, reply, question_is_answered):
-        print(reply)
-        print("question_is_answered", question_is_answered)
+    def return_reply_or_go_to_next_state(self, reply, question_is_answered, message):
         if not question_is_answered:
             return reply
         else:
             #if there are no more questions to ask we call reply recurcively and thus go to the next state
             self.state.state = next_enum(self.state.state)
-            return self.reply("")
+            return self.reply(message)
 
 conversation = Conversation()
 
